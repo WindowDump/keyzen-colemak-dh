@@ -24,15 +24,16 @@
 
         <style>
             @font-face {
-              font-family: 'Ubuntu Monokz';
+              font-family: 'Source Code Semibold';
               font-style: normal;
               font-weight: normal;
-              src: local('Ubuntu Monokz'), local('UbuntuMono-Regular'), url('ubuntu-mono.woff') format('woff');
+              src: url('SourceCodePro-Semibold.otf.woff2') format('woff');
             }
 
             body {
-                background-image: url('brushed_alu.png');
-                font-family: 'Ubuntu Monokz', sans-serif;
+                /*background-image: url('brushed_alu.png');*/
+                background-color: #282a36;
+                font-family: 'Source Code Semibold', sans-serif;
                 padding: 0; 
                 margin: 0;
                 -webkit-touch-callout: none;
@@ -50,7 +51,7 @@
             }
 
             #word {
-                color: #AAA;
+                color: #f8f8f2;
                 position: absolute;
                 top: 30%;
                 margin-top: -64px;
@@ -66,14 +67,14 @@
             }
             
             .keys-hit {
-                color: #CCC;
+                color: #f8f8f2;
                 font-size: 128px;
             	text-shadow: none;
             }
             
             #next-level {
                 height: 2px;
-                background-color: #f78d1d;
+                background-color: #8be9fd;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -88,11 +89,11 @@
                 word-wrap: break-word;
                 font-weight: bold;
                 cursor: hand;
-                color: #AAAAAA;
+                color: #f8f8f2;
             }
 
             .keyboard-layout {
-                width: 37%;
+                width: 35%;
                 position: absolute;
                 bottom: 15%;
                 left: 0;
@@ -107,8 +108,8 @@
             }
 
             #timer-wrapper {
-                color: #AAA;
-                font-family: 'Ubuntu Monokz', sans-serif;
+                color: #bd93f9;
+                font-family: 'Source Code Semibold', sans-serif;
                 text-align: center;
                 margin-left: auto;
                 margin-right:auto;
@@ -122,20 +123,20 @@
             }
 
             #title {
-                color: #AAA;
+                color: #f8f8f2;
                 position: absolute;
                 bottom: 18px;
                 text-align: center;
                 margin-left: auto;
                 margin-right:auto;
-                font-family: 'Ubuntu Monokz', sans-serif;
+                font-family: 'Source Code Semibold', sans-serif;
                 font-size: 18px;
                 font-weight: bold;
                 width:100%;
             }
 
             a {
-                color: #AAAAAA;
+                color: #f8f8f2;
                 text-decoration: none;
             }
 
@@ -149,7 +150,7 @@
                 position: absolute;
                 right: 16px;
                 bottom: 16px;
-                color: #AAA;
+                color: #f8f8f2;
                 font-weight: bold;
                 text-align: right;
             }
@@ -159,27 +160,27 @@
                 position: absolute;
                 left: 16px;
                 bottom: 16px;
-                color: #AAA;
+                color: #f8f8f2;
                 font-weight: bold;
                 text-align: right;
             }
             
             #rigor-number {
-                color: #000;
+                color: #8be9fd;
                 cursor: hand;
             }   
 
             .currentChar {
-                border-bottom: 4px solid #f78d1d;
+                border-bottom: 4px solid #50fa7b;
             }
             
             .errorChar {
-                color: #FF0000;
+                color: #ff5555;
             }
             
             .goodChar {
-                color: #AAAAAA;
-            	text-shadow: 0px 1px 1px #FFF, 0px 2px 2px #FFF;
+                color: #f8f8f2;
+            	text-shadow: 0px 1px 1px #000, 0px 2px 2px #000;
             }
         </style>
     </head>
@@ -217,6 +218,9 @@
             </div>
             <div class="keyboard-layout" data-layout="qwerty">
                 <img src="./assets/img/qwerty.png" alt="qwerty.png">
+            </div>
+            <div class="keyboard-layout" data-layout="hands-down-alt">
+                <img src="./assets/img/hands-down-alt.png" alt="hands-down-alt.png">
             </div>
 
             <div id="timer-wrapper">

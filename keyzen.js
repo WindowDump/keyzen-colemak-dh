@@ -6,10 +6,11 @@ var hpm = 0;
 var ratio = 0;
 
 layouts={};
-layouts["colemak"] = " tnseriaodhplfuwyq;vmc,x.z/bk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
+layouts["hands-down-alt"] = " tunesaripykchogx'/zvdflqb,j.mw;4738291056\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
+layouts["colemak"] = " tnseriaodhplfuwyq;jlvmc,x.z/bk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
+layouts["colemak-dh-matrix"] = " tnseriaogmplfuwyq;bjdhc,x.z/vk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["colemak-dh"] = " tnseriaogmplfuwyq;bjvhd,c.x/zk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["colemak-dhk"] = " tnseriaogkplfuwyq;bjvhd,c.x/zm4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
-layouts["colemak-dh-matrix"] = " tnseriaogmplfuwyq;bjdhc,x.z/vk4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["colemak-dhk-matrix"] = " tnseriaogkplfuwyq;bjdhc,x.z/vm4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 layouts["qwerty"] = " fjdksla;ghrueiwoqptyvmc,x.z/bn4738291056`-=[]\\'ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
 // layouts["azerty"] = " jfkdlsmqhgyturieozpabnvcxw6758493021`-=[]\\;',./ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+{}|:\"<>?";
@@ -17,11 +18,12 @@ layouts["qwerty"] = " fjdksla;ghrueiwoqptyvmc,x.z/bn4738291056`-=[]\\'ABCDEFGHIJ
 // layouts["norman"] = " ntieosaygjkufrdlw;qbpvmcxz1234567890'\",.!?:;/@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\";
 // layouts["code-es6"] = " {}',;():.>=</_-|`!?#[]\\+\"@$%&*~^";
 
-data.chars = layouts["colemak-dh"];
+data.chars = layouts["hands-down-alt"];
 data.consecutive = 5;
 data.word_length = 7;
-data.current_layout = "colemak-dh";
-
+data.current_layout = "hands-down-alt";
+" ukchogx'/vdqjmw;4738291056\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\"
+" odhuwq;vmcx/k4738291056'\"!?:@$%&#*()_ABCDEFGHIJKLMNOPQRSTUVWXYZ~+-={}|^<>`[]\\"
 $(document).ready(function() {
     if (localStorage.data != undefined) {
         load();
@@ -101,13 +103,13 @@ function keyHandler(e) {
     if(key == data.word[data.word_index]) {
         hits_correct += 1;
         data.in_a_row[key] += 1;
-        (new Audio("click.mp3")).play();
+        (new Audio("cream f.wav")).play();
     }
     else {
         hits_wrong += 1;
         data.in_a_row[data.word[data.word_index]] = 0;
         data.in_a_row[key] = 0;
-        (new Audio("clack.mp3")).play();
+        (new Audio("cream space.wav")).play();
         data.word_errors[data.word_index] = true;
     }
     data.word_index += 1;
@@ -138,7 +140,7 @@ function next_word(){
 
 function level_up() {
     if (data.level + 1 <= data.chars.length - 1) {
-        (new Audio('ding.wav')).play();
+        (new Audio('cream enter.wav')).play();
     }
     l = Math.min(data.level + 1, data.chars.length);
     set_level(l);
@@ -168,14 +170,14 @@ function render_layout() {
 	var layouts_html = "<span id='layout'>";
 	for(var layout in layouts){
 		if(data.current_layout == layout){
-			layouts_html += "<span style='color: #F78D1D' onclick='set_layout(\"" + layout + "\");'> "
+			layouts_html += "<span style='color: #f1fa8c' onclick='set_layout(\"" + layout + "\");'> "
 		} else {
 		 layouts_html += "<span style='color: #AAA' onclick='set_layout(\"" + layout + "\");'> "
 		}
 		layouts_html += layout + "</span>";
 	}
 	layouts_html += "</span>";
-	$("#layout").html('click to set layout: ' + layouts_html);
+	$("#layout").html('click to set layout:<br />' + layouts_html);
 }
 
 function render_level() {
@@ -184,13 +186,13 @@ function render_level() {
     var training_chars = get_training_chars();
     for (var c in data.chars) {
         if(training_chars.indexOf(data.chars[c]) != -1) {
-            chars += "<span style='color: #F78D1D' onclick='set_level(" + c + ");'>"
+            chars += "<span style='color: #ff5555' onclick='set_level(" + c + ");'>"
         }
         else if (level_chars.indexOf(data.chars[c]) != -1) {
-            chars += "<span style='color: #000' onclick='set_level(" + c + ");'>"
+            chars += "<span style='color: #ffb86c' onclick='set_level(" + c + ");'>"
         }
         else {
-            chars += "<span style='color: #AAA' onclick='set_level(" + c + ");'>"
+            chars += "<span style='color: #f8f8f2' onclick='set_level(" + c + ");'>"
         }
         if (data.chars[c] == ' ') {
             chars += "&#9141;";
@@ -201,7 +203,7 @@ function render_level() {
         chars += "</span>";
     }
     chars += "</span>";
-    $("#level-chars").html('click to set level: ' + chars);
+    $("#level-chars").html('click to set level:<br />' + chars);
 }
 
 function render_rigor() {
